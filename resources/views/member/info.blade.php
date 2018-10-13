@@ -1,0 +1,4 @@
+meminfo blade
+
+{{$name}}
+{{$age}}
