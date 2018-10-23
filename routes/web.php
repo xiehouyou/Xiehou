@@ -19,6 +19,16 @@ Route::get('/help','StaticPagesController@help')->name('help');
 Route::get('/about','StaticPagesController@about')->name('about');
 Route::get('signup','UsersController@create')->name('signup');
 Route::Resource('users','UsersController');
+Route::get('login', 'SessionsController@create')->name('login');
+Route::post('login', 'SessionsController@store')->name('login');
+Route::delete('logout', 'SessionsController@destroy')->name('logout');
+
+/*Route::get('login','SessionsController@create')->name('login');
+Route::post('login','SessionsController@store')->name('login');
+Route::post('login', 'SessionsController@store')->name('login');
+Route::delete('logout','SessionsController@destroy')->name('logout');
+*/
+
 Route::any('test1',['uses'=>'StudentController@test1']);
 /*Route::get('member/info','MemberController@info');*/
 /*Route::get('member/info',['uses'=>'MemberController@info']);*/
