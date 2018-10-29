@@ -87,7 +87,7 @@ class UsersController extends Controller
     }
     protected function sendEmailConfirmationTo($user)
     {
-        $view = 'emails.confirm';
+       /* $view = 'emails.confirm';
         $data = compact('user');
         $from = 'aufree@yousails.com';
         $name = 'Aufree';
@@ -96,6 +96,14 @@ class UsersController extends Controller
 
         Mail::send($view, $data, function ($message) use ($from, $name, $to, $subject) {
             $message->from($from, $name)->to($to)->subject($subject);
+        });*/
+        $view = 'emails.confirm';
+        $data = compact('user');
+        $to = $user->email;
+        $subject = "感谢注册 Sample 应用！请确认你的邮箱。";
+
+        Mail::send($view, $data, function ($message) use ($to, $subject) {
+            $message->to($to)->subject($subject);
         });
     }
     //增加了 confirmEmail 来开启未登录用户的访问。
